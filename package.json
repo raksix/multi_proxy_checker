@@ -1,0 +1,14 @@
+{
+  "name": "mpc",
+  "version": "1.0.0",
+  "description": "Multi Proxy Checker Fast",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "undici": "^6.21.0"
+  }
+}
