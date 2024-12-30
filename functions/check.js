@@ -1,5 +1,7 @@
 const { request } = require('undici');
-const { getWork, getNotWork, setWork, setNotWork } = require('./list');
+const { addWork, addNotWork } = require('./list');
+
+const recheck_list = [];
 
 const check_proxies = (list) => new Promise((resolve, reject) => {
    try {
@@ -14,14 +16,21 @@ const check_proxies = (list) => new Promise((resolve, reject) => {
 
          try {
             await request(proxy);
-            work.push(proxy);
+            addWork(proxy);
+            // Proxy çalışıyorsa recheck_list'ten kaldır
+            const index = recheck_list.indexOf(proxy);
+            if (index > -1) {
+               recheck_list.splice(index, 1);
+            }
          } catch (error) {
-            notwork.push(proxy);
+            if (!recheck_list.includes(proxy)) {
+               setTimeout(() => {
+                  recheck_list.push(proxy);
+               }, 30 * 1000); // recheck after 15 seconds
+            }
+            addNotWork(proxy);
          }
       });
-
-      setWork(work);
-      setNotWork(notwork);
 
       if (work.length + notwork.length === list.length) {
          resolve(work); // if all proxies checked resolve promise with work
@@ -30,5 +39,9 @@ const check_proxies = (list) => new Promise((resolve, reject) => {
       reject(error); // if error reject promise with error
    }
 });
+
+setInterval(() => {
+   check_proxies(recheck_list); // rechecking not working proxies
+}, 30 * 1000)
 
 module.exports = check_proxies;

@@ -10,5 +10,5 @@ const proxies = fs.readFileSync(proxiesFilePath, 'utf-8').split('\n').filter(Boo
 check_proxies(proxies)
 
 setInterval(() => {
-   console.log(proxy_list.getWork())
+   console.log(proxy_list.getWork().length + ' proxies are working');
 }, 1000)

@@ -12,9 +12,19 @@ const setNotWork = (newNotWork) => {
     notwork = newNotWork;
 };
 
+const addWork = (proxy) => {
+    work.push(proxy);
+};
+
+const addNotWork = (proxy) => {
+    notwork.push(proxy);
+};
+
 module.exports = {
     getWork,
     getNotWork,
     setWork,
-    setNotWork
+    setNotWork,
+    addWork,
+    addNotWork
 };
