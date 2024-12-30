@@ -1,16 +1,20 @@
 {
-  "name": "multi-proxy-checker",
-  "version": "1.0.0",
-  "description": "Multi Proxy Checker Fast",
-  "main": "index.js",
-  "scripts": {
-    "test": "nodemon ./test/test.js",
-    "start": "node index.js",
-    "dev": "nodemon index.js"
-  },
-  "author": "raksix",
-  "license": "ISC",
-  "dependencies": {
-    "undici": "^6.21.0"
-  }
+   "name": "multi-proxy-checker",
+   "version": "1.0.0",
+   "description": "Multi Proxy Checker Fast",
+   "main": "index.js",
+   "scripts": {
+      "test": "nodemon ./test/test.js",
+      "start": "node index.js",
+      "dev": "nodemon index.js"
+   },
+   "author": "raksix",
+   "license": "ISC",
+   "dependencies": {
+      "undici": "^6.21.0"
+   },
+   "repository": {
+      "type": "git",
+      "url": "https://github.com/raksix/multi_proxy_checker"
+   }
 }
